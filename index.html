@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quest — TKA Matematika Kelas 6</title>
+<style>
+:root{
+  color-scheme: light;
+  --navy:#172554;--blue:#2563eb;--sky:#dbeafe;--teal:#0f766e;
+  --mint:#ccfbf1;--coral:#fb7185;--yellow:#fbbf24;--ink:#1e293b;
+  --muted:#64748b;--paper:#fffdf7;--line:#e2e8f0;--green:#15803d;
+  --red:#b91c1c;--shadow:0 18px 45px rgba(30,41,59,.10);
+}
+*{box-sizing:border-box}
+html,body{background-color:#f8fafc;color:#1e293b} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1e293b;
+background:radial-gradient(circle at 8% 8%,#dbeafe 0,transparent 26%),radial-gradient(circle at 92% 15%,#ccfbf1 0,transparent 25%),#f8fafc;min-height:100vh}
+button,input{font:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 18px 56px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy);letter-spacing:.2px}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:white;font-size:23px;box-shadow:0 8px 18px #2563eb33}
+.tag{background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:12px;font-weight:800}
+.panel{background:#ffffff;border:1px solid #e8edf5;border-radius:24px;box-shadow:var(--shadow);padding:clamp(20px,4vw,34px)}
+.hero{background:linear-gradient(125deg,#172554,#1d4ed8 62%,#0f766e);color:#ffffff;position:relative;overflow:hidden}
+.hero:after{content:"✦  ◌  ✧";position:absolute;right:22px;top:16px;font-size:44px;color:#ffffff30;letter-spacing:10px}
+.kicker{font-size:12px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;color:#ffffff;opacity:1}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.05;margin:10px 0}
+.hero p{color:#ffffff;max-width:650px;line-height:1.65;margin-bottom:0;opacity:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{font-size:12px;font-weight:800;padding:7px 11px;border-radius:999px;background:#ffffff1c;border:1px solid #ffffff38}
+h2{color:var(--navy);margin:0 0 14px;font-size:22px}
+h3{margin:0 0 10px;color:var(--navy)}
+label{display:block;font-weight:800;font-size:13px;margin:0 0 7px;color:#334155}
+input[type=text]{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#ffffff;color:#1e293b;outline:none;opacity:1} input::placeholder{color:#64748b;opacity:1}
+input[type=text]:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb18}
+.identity-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.btn{border:0;border-radius:13px;padding:13px 19px;font-weight:900;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--yellow);color:#172554;box-shadow:0 7px 0 #d69a13}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-ghost{background:#eff6ff;color:#1d4ed8}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.note{font-size:13px;color:var(--muted);line-height:1.6}
+.hidden{display:none!important}
+.progress-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:10px;font-size:13px;font-weight:900;color:var(--navy)}
+.progress{height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),#14b8a6);border-radius:99px;transition:width .3s}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.pill{font-size:12px;font-weight:900;padding:7px 10px;border-radius:999px;background:#eff6ff;color:#1d4ed8}
+.pill.teal{background:#ccfbf1;color:#0f766e}
+.stimulus{background:linear-gradient(135deg,#f0f9ff,#f0fdfa);border:1px solid #bae6fd;border-radius:18px;padding:18px;margin:16px 0}
+.stimulus-title{font-weight:900;color:#0f4c81;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.stimulus p{line-height:1.6;margin:6px 0;color:#1e293b;opacity:1}
+.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.data-card{background:white;border:1px solid #e2e8f0;border-radius:14px;padding:12px;text-align:center}
+.ball{width:25px;height:25px;border-radius:50%;margin:0 auto 7px;box-shadow:inset -4px -5px 8px #0002,inset 3px 3px 5px #fff8}
+.red{background:#ef4444}.blue{background:#3b82f6}.yellow{background:#facc15}.green{background:#22c55e}
+.big-num{font-size:25px;font-weight:1000;color:var(--navy)}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;margin-top:12px;font-size:14px}
+th,td{padding:10px 11px;border-bottom:1px solid #e2e8f0;text-align:left}
+th{background:#eaf2ff;color:#1e3a8a;font-size:12px}
+tr:last-child td{border-bottom:0}
+.question-card{margin-top:18px;border:1px solid var(--line);border-radius:18px;padding:20px;background:#fff}
+.question-title{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.qnum{width:34px;height:34px;border-radius:11px;background:#172554;color:#fff;display:grid;place-items:center;font-weight:1000;flex:none}
+.qtype{font-size:11px;text-transform:uppercase;letter-spacing:.7px;font-weight:900;color:var(--teal);background:#ccfbf1;padding:6px 9px;border-radius:99px}
+.question-text{font-size:16px;line-height:1.65;font-weight:700;margin:8px 0 16px;color:#1e293b;opacity:1}
+.options{display:grid;gap:9px}
+.option{display:flex;gap:11px;align-items:flex-start;padding:12px 13px;border:1.5px solid var(--line);border-radius:13px;cursor:pointer;line-height:1.5;background:#ffffff;color:#1e293b;opacity:1}
+.option:hover{border-color:#93c5fd;background:#f8fbff}
+.option input{margin-top:4px;accent-color:var(--blue);transform:scale(1.1)}
+.option.selected{border-color:var(--blue);background:#eff6ff}
+.answer-input{max-width:340px}
+.tf-table td:first-child{width:68%}
+.tf-choice{display:flex;gap:12px;white-space:nowrap}
+.tf-choice label{font-weight:700;margin:0;display:flex;gap:5px;align-items:center}
+.tf-choice input{accent-color:var(--blue)}
+.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.feedback{margin-top:16px;padding:14px 16px;border-radius:14px;font-weight:700;line-height:1.55}
+.feedback.good{background:#dcfce7;border:1px solid #86efac;color:#166534}
+.feedback.try{background:#fff7ed;border:1px solid #fdba74;color:#9a3412}
+.feedback.bad{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b}
+.feedback.info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+.small{font-size:12px;color:var(--muted);font-weight:600}
+.scorebox{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+.scoreitem{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:12px 16px;min-width:125px}
+.scoreitem b{display:block;font-size:23px;color:var(--navy)}
+.scoreitem span{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase}
+.result{background:linear-gradient(135deg,#eff6ff,#f0fdfa);border:1px solid #bfdbfe;border-radius:18px;padding:20px;margin-top:20px}
+.review-row{padding:11px 0;border-bottom:1px solid #dbeafe;display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.review-row:last-child{border:0}
+footer{text-align:center;color:#94a3b8;font-size:12px;margin-top:22px}
+@media(max-width:640px){.identity-grid{grid-template-columns:1fr}.data-grid{gap:6px}.data-card{padding:9px 5px}.big-num{font-size:21px}.panel{border-radius:18px}.tf-table td:first-child{width:auto}.tf-choice{gap:7px}}
+@media print{body{background:white}.btn,header .tag{display:none!important}.panel{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><div class="logo">✦</div><div>MATH QUEST <span style="color:#0f766e">/ TKA</span></div></div>
+  <div class="tag">MATEMATIKA • KELAS 6 SD</div>
+</header>
+
+<section id="welcome" class="panel">
+  <div class="hero panel" style="box-shadow:none;border:0;padding:26px">
+    <div class="kicker">Misi numerasi dimulai!</div>
+    <h1>Jelajahi Dunia<br>Peluang 🎯</h1>
+    <p>Uji kemampuanmu membaca informasi, menganalisis kemungkinan, dan mengambil keputusan melalui 10 tantangan matematika.</p>
+    <div class="chips"><span class="chip">10 soal</span><span class="chip">4 bentuk soal</span><span class="chip">Skor maksimal 100</span><span class="chip">1 kali kesempatan mengulang</span></div>
+  </div>
+  <div style="padding-top:24px">
+    <h2>Identitas Peserta</h2>
+    <div class="identity-grid">
+      <div><label for="studentName">Nama lengkap</label><input id="studentName" type="text" placeholder="Tuliskan nama lengkapmu" maxlength="60"></div>
+      <div><label for="studentClass">Kelas</label><input id="studentClass" type="text" placeholder="Contoh: VI-A" maxlength="20"></div>
+    </div>
+    <p class="note">Bacalah setiap stimulus dengan teliti. Kamu harus menyelesaikan soal yang sedang dikerjakan sebelum dapat membuka soal berikutnya.</p>
+    <button class="btn btn-primary" onclick="startQuiz()">Mulai Tantangan <span>→</span></button>
+    <div id="identityError" class="feedback bad hidden">Lengkapi nama dan kelas terlebih dahulu, ya.</div>
+  </div>
+</section>
+
+<section id="quiz" class="panel hidden">
+  <div class="progress-head"><span id="progressLabel">Soal 1 dari 10</span><span id="progressPct">0% selesai</span></div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div class="meta"><span class="pill" id="studentLabel"></span><span class="pill teal" id="sectionLabel"></span><span class="pill" id="scoreLabel">Skor sementara: 0</span></div>
+  <div id="stimulusBox" class="stimulus"></div>
+  <div class="question-card">
+    <div class="question-title"><div class="qnum" id="qNumber">1</div><span class="qtype" id="qType"></span></div>
+    <div id="questionText" class="question-text"></div>
+    <div id="answerArea"></div>
+    <div class="actions">
+      <button id="submitBtn" class="btn btn-blue" onclick="checkAnswer()">Periksa Jawaban</button>
+      <span class="small" id="attemptHint">Kesempatan menjawab: 2 kali</span>
+    </div>
+    <div id="feedback" class="hidden" aria-live="polite"></div>
+    <div class="actions hidden" id="nextArea">
+      <button class="btn btn-primary" onclick="nextQuestion()">Lanjut ke Soal Berikutnya →</button>
+    </div>
+  </div>
+  <p class="note" style="margin:16px 2px 0">💡 Pengingat: setiap soal bernilai 10 poin. Jika jawaban pertama salah, kamu boleh mencoba sekali lagi. Jawaban benar pada percobaan kedua mendapat 8 poin.</p>
+</section>
+
+<section id="finish" class="panel hidden">
+  <div class="hero panel" style="box-shadow:none;border:0;padding:24px">
+    <div class="kicker">Misi selesai!</div>
+    <h1>Kerja bagus! 🏆</h1>
+    <p id="finishMessage">Kamu telah menyelesaikan seluruh tantangan peluang.</p>
+  </div>
+  <div class="scorebox">
+    <div class="scoreitem"><b id="finalScore">0</b><span>Nilai akhir</span></div>
+    <div class="scoreitem"><b id="correctCount">0/10</b><span>Jawaban benar</span></div>
+    <div class="scoreitem"><b id="retryCount">0</b><span>Soal diulang</span></div>
+  </div>
+  <div class="result">
+    <h3>Rekap Hasil</h3>
+    <div id="reviewList"></div>
+  </div>
+  <div class="actions" style="margin-top:20px">
+    <button class="btn btn-blue" onclick="window.print()">Cetak / Simpan Hasil</button>
+    <button class="btn btn-ghost" onclick="location.reload()">Kerjakan Lagi</button>
+  </div>
+</section>
+<footer>Math Quest • Latihan TKA Matematika SD • Semangat belajar! ✨</footer>
+</div>
+
+<script>
+const stimuli = {
+  festival: `<div class="stimulus-title">🎪 Stimulus 1 — Festival Permainan Sekolah</div>
+  <p>Dalam rangka memperingati hari kemerdekaan, sekolah mengadakan festival permainan. Salah satu permainan mengharuskan peserta mengambil satu bola dari kotak tertutup secara acak.</p>
+  <p>Panitia memasukkan bola dengan komposisi berikut. Setiap bola memiliki ukuran dan bentuk yang sama.</p>
+  <div class="data-grid">
+    <div class="data-card"><div class="ball red"></div><div class="big-num">8</div><b>Bola merah</b></div>
+    <div class="data-card"><div class="ball blue"></div><div class="big-num">6</div><b>Bola biru</b></div>
+    <div class="data-card"><div class="ball yellow"></div><div class="big-num">4</div><b>Bola kuning</b></div>
+  </div><p><b>Jumlah seluruh bola: 18.</b> Setiap peserta mengambil satu bola tanpa melihat ke dalam kotak.</p>`,
+  wheel: `<div class="stimulus-title">🎡 Stimulus 2 — Roda Putar Berhadiah</div>
+  <p>Dalam kegiatan kelas, siswa mengikuti permainan roda putar untuk mendapatkan hadiah. Roda dibagi menjadi 12 bagian yang sama besar.</p>
+  <div style="display:flex;justify-content:center;margin:12px 0"><div style="width:148px;height:148px;border-radius:50%;border:7px solid white;box-shadow:0 3px 12px #0f172a22;background:conic-gradient(#ef4444 0deg 90deg,#3b82f6 90deg 210deg,#22c55e 210deg 270deg,#facc15 270deg 360deg);position:relative"><div style="position:absolute;inset:48px;border-radius:50%;background:white;border:3px solid #e2e8f0"></div></div></div>
+  <table><tr><th>Warna</th><th>Jumlah bagian</th><th>Hadiah</th></tr><tr><td>Merah</td><td>3</td><td>Buku</td></tr><tr><td>Biru</td><td>4</td><td>Pensil</td></tr><tr><td>Hijau</td><td>2</td><td>Penghapus</td></tr><tr><td>Kuning</td><td>3</td><td>Stiker</td></tr><tr><th>Total</th><th>12</th><th></th></tr></table>
+  <p>Setiap siswa hanya mendapat satu kesempatan memutar roda.</p>`,
+  shop: `<div class="stimulus-title">🛍️ Stimulus 3 — Data Penjualan Toko Alat Tulis</div>
+  <p>Selama satu minggu, sebuah toko mencatat jumlah barang yang terjual. Pemilik toko memberikan satu kupon undian kepada setiap pembeli. Seluruh kupon memiliki kesempatan yang sama untuk terpilih.</p>
+  <table><tr><th>Jenis barang</th><th>Jumlah terjual / kupon</th></tr><tr><td>Buku tulis</td><td>24</td></tr><tr><td>Pensil</td><td>18</td></tr><tr><td>Penghapus</td><td>12</td></tr><tr><td>Penggaris</td><td>6</td></tr><tr><th>Total</th><th>60</th></tr></table>
+  <p>Satu kupon akan diambil secara acak dari seluruh kupon yang terkumpul.</p>`,
+  cards: `<div class="stimulus-title">🃏 Stimulus 4 — Permainan Kartu Angka</div>
+  <p>Pada kegiatan Math Day, siswa memainkan permainan kartu angka. Terdapat 20 kartu yang diberi nomor 1 sampai 20. Seluruh kartu dimasukkan ke dalam sebuah kotak.</p>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:430px;margin:14px auto">
+  ${Array.from({length:20},(_,i)=>`<div style="border:1.5px solid #93c5fd;background:linear-gradient(145deg,#fff,#eff6ff);border-radius:8px;text-align:center;padding:8px 2px;font-weight:1000;color:#1d4ed8;box-shadow:0 2px 0 #bfdbfe">${i+1}</div>`).join('')}
+  </div>
+  <p>Seorang siswa mengambil satu kartu secara acak. Kartu yang terambil tidak dikembalikan ke dalam kotak.</p>`
+};
+
+const questions = [
+ {stim:"festival",section:"Festival Permainan",type:"Pilihan Ganda",text:"Berdasarkan informasi tersebut, pernyataan yang tepat mengenai peluang terambilnya bola adalah ....",opts:["Peluang mengambil bola kuning lebih besar daripada bola biru.","Peluang mengambil bola merah sama dengan bola biru.","Peluang mengambil bola merah lebih besar daripada bola biru.","Peluang mengambil bola biru lebih besar daripada bola merah."],correct:["C"],explain:"Bola merah berjumlah 8, sedangkan bola biru 6. Karena 8/18 lebih besar daripada 6/18, peluang mengambil bola merah lebih besar."},
+ {stim:"festival",section:"Festival Permainan",type:"Isian Singkat",text:"Tentukan peluang seorang peserta mendapatkan bola yang bukan berwarna merah. Tuliskan dalam bentuk pecahan paling sederhana.",answer:["5/9"],explain:"Bola bukan merah = 6 + 4 = 10. Peluangnya 10/18 = 5/9."},
+ {stim:"festival",section:"Festival Permainan",type:"Pilihan Ganda Kompleks",text:"Pilih semua pernyataan yang benar berdasarkan komposisi bola di dalam kotak.",opts:["Peluang mengambil bola biru adalah 1/3.","Peluang mengambil bola kuning adalah 2/9.","Peluang mengambil bola merah lebih dari 1/2.","Peluang mengambil bola bukan kuning adalah 7/9."],correct:["A","B","D"],multi:true,explain:"Biru = 6/18 = 1/3; kuning = 4/18 = 2/9; merah = 8/18, bukan lebih dari 1/2; bukan kuning = 14/18 = 7/9."},
+ {stim:"wheel",section:"Roda Putar Berhadiah",type:"Benar atau Salah",text:"Tentukan Benar atau Salah untuk setiap pernyataan berikut.",rows:["Peluang mendapatkan hadiah pensil adalah 1/3.","Peluang mendapatkan hadiah buku lebih besar daripada penghapus.","Peluang mendapatkan hadiah stiker sama dengan peluang mendapatkan buku."],correct:["Benar","Benar","Benar"],explain:"Pensil 4/12 = 1/3. Buku 3 bagian lebih banyak daripada penghapus 2 bagian. Stiker dan buku masing-masing memiliki 3 bagian."},
+ {stim:"wheel",section:"Roda Putar Berhadiah",type:"Isian Singkat",text:"Berapakah peluang seorang siswa mendapatkan hadiah selain pensil? Tuliskan dalam bentuk pecahan paling sederhana.",answer:["2/3"],explain:"Bagian selain pensil = 12 − 4 = 8. Peluangnya 8/12 = 2/3."},
+ {stim:"shop",section:"Toko Alat Tulis",type:"Pilihan Ganda",text:"Jika satu kupon diambil secara acak, peluang mendapatkan kupon milik pembeli yang membeli penghapus adalah ....",opts:["1/10","1/5","3/10","2/5"],correct:["B"],explain:"Ada 12 kupon pembeli penghapus dari total 60 kupon. Peluangnya 12/60 = 1/5."},
+ {stim:"shop",section:"Toko Alat Tulis",type:"Benar atau Salah",text:"Tentukan Benar atau Salah berdasarkan data penjualan tersebut.",rows:["Peluang kupon pembeli buku tulis terpilih adalah 2/5.","Peluang kupon pembeli penggaris terpilih adalah 1/10.","Peluang kupon pembeli pensil terpilih lebih kecil daripada penghapus."],correct:["Benar","Benar","Salah"],explain:"Buku tulis 24/60 = 2/5; penggaris 6/60 = 1/10. Pensil 18/60 justru lebih besar daripada penghapus 12/60."},
+ {stim:"cards",section:"Permainan Kartu Angka",type:"Pilihan Ganda Kompleks",text:"Pilih semua pernyataan yang benar tentang peluang mengambil satu kartu.",opts:["Peluang mendapatkan bilangan genap adalah 1/2.","Peluang mendapatkan bilangan prima adalah 2/5.","Peluang mendapatkan bilangan kelipatan 5 adalah 1/5.","Peluang mendapatkan bilangan lebih dari 15 adalah 1/4."],correct:["A","B","C","D"],multi:true,explain:"Ada 10 bilangan genap; 8 bilangan prima; 4 kelipatan 5; dan 5 bilangan lebih dari 15. Masing-masing peluangnya 1/2, 2/5, 1/5, dan 1/4."},
+ {stim:"cards",section:"Permainan Kartu Angka",type:"Isian Singkat",text:"Berapa banyak kartu bernomor prima yang terdapat di dalam kotak?",answer:["8","delapan"],explain:"Bilangan prima dari 1 sampai 20 adalah 2, 3, 5, 7, 11, 13, 17, dan 19. Jadi, ada 8 kartu."},
+ {stim:"cards",section:"Permainan Kartu Angka",type:"Isian Singkat",text:"Guru menambahkan beberapa kartu baru bernomor lebih dari 20 dan bukan bilangan prima. Setelah penambahan, jumlah seluruh kartu menjadi 25. Berapakah peluang terambilnya kartu bernomor prima sekarang? Tuliskan dalam bentuk pecahan paling sederhana.",answer:["8/25"],explain:"Jumlah kartu prima tetap 8 karena semua kartu tambahan bukan prima. Jumlah seluruh kartu menjadi 25, sehingga peluangnya 8/25."}
+];
+
+let current=0,attempt=0,score=0,results=[],answered=false,student="",klass="";
+const $=id=>document.getElementById(id);
+function startQuiz(){
+ student=$('studentName').value.trim();klass=$('studentClass').value.trim();
+ if(!student||!klass){$('identityError').classList.remove('hidden');return;}
+ $('identityError').classList.add('hidden');$('studentLabel').textContent=student+" • "+klass;
+ $('welcome').classList.add('hidden');$('quiz').classList.remove('hidden');renderQuestion();
+}
+function renderQuestion(){
+ const q=questions[current];attempt=0;answered=false;
+ $('progressLabel').textContent=`Soal ${current+1} dari 10`;
+ $('progressPct').textContent=`${Math.round(current/10*100)}% selesai`;
+ $('progressBar').style.width=(current/10*100)+'%';
+ $('sectionLabel').textContent=q.section;$('scoreLabel').textContent='Skor sementara: '+score;
+ $('stimulusBox').innerHTML=stimuli[q.stim];
+ $('qNumber').textContent=current+1;$('qType').textContent=q.type;$('questionText').textContent=q.text;
+ $('feedback').className='hidden';$('feedback').innerHTML='';
+ $('nextArea').classList.add('hidden');$('submitBtn').disabled=false;$('submitBtn').classList.remove('hidden');
+ $('attemptHint').textContent='Kesempatan menjawab: 2 kali';
+ let html='';
+ if(q.opts){
+   html='<div class="options">'+q.opts.map((o,i)=>`<label class="option"><input type="${q.multi?'checkbox':'radio'}" name="answer" value="${String.fromCharCode(65+i)}"><span><b>${String.fromCharCode(65+i)}.</b> ${o}</span></label>`).join('')+'</div>';
+ }else if(q.rows){
+   html='<table class="tf-table"><tr><th>Pernyataan</th><th>Jawaban</th></tr>'+q.rows.map((r,i)=>`<tr><td>${String.fromCharCode(65+i)}. ${r}</td><td><div class="tf-choice"><label><input type="radio" name="row${i}" value="Benar"> Benar</label><label><input type="radio" name="row${i}" value="Salah"> Salah</label></div></td></tr>`).join('')+'</table>';
+ }else{
+   html='<input class="answer-input" id="shortAnswer" type="text" placeholder="Ketik jawabanmu di sini" autocomplete="off"><p class="small">Gunakan format pecahan a/b jika diminta. Contoh: 3/4.</p>';
+ }
+ $('answerArea').innerHTML=html;
+ document.querySelectorAll('.option').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));if(el.querySelector('input').type==='radio')el.classList.add('selected');else el.classList.toggle('selected',el.querySelector('input').checked)}));
+}
+function getAnswer(){
+ const q=questions[current];
+ if(q.opts){return [...document.querySelectorAll('input[name="answer"]:checked')].map(x=>x.value).sort();}
+ if(q.rows){let a=[];for(let i=0;i<q.rows.length;i++){let v=document.querySelector(`input[name="row${i}"]:checked`);if(!v)return null;a.push(v.value);}return a;}
+ let v=$('shortAnswer').value.trim();return v?normal(v):null;
+}
+function normal(s){return String(s).toLowerCase().replace(/\s/g,'').replace(/,/g,'.');}
+function isCorrect(a,q){
+ if(a===null)return false;
+ if(q.opts){return a.length===q.correct.length&&a.every((v,i)=>v===q.correct[i]);}
+ if(q.rows){return a.length===q.correct.length&&a.every((v,i)=>v===q.correct[i]);}
+ return q.answer.map(normal).includes(a);
+}
+function showFeedback(kind,msg){$('feedback').className='feedback '+kind;$('feedback').innerHTML=msg;$('feedback').classList.remove('hidden');}
+function checkAnswer(){
+ if(answered)return;
+ const q=questions[current],a=getAnswer();
+ if(a===null || (Array.isArray(a)&&a.length===0)){showFeedback('info','Pilih atau isi jawaban terlebih dahulu, ya. Periksa kembali sebelum mengirim.');return;}
+ if(isCorrect(a,q)){
+   const points=attempt===0?10:8;score+=points;answered=true;
+   results.push({points,correct:true,retried:attempt>0});
+   showFeedback('good',`🎉 <b>Tepat sekali!</b> ${attempt===0?'Kamu menjawab benar pada percobaan pertama.':'Kamu berhasil memperbaiki jawabanmu pada kesempatan kedua.'}<br>${q.explain}<br><b>+${points} poin</b>`);
+   lockQuestion();
+ }else if(attempt===0){
+   attempt=1;$('attemptHint').textContent='Kesempatan tersisa: 1 kali';
+   showFeedback('try','Belum tepat, tetapi jangan menyerah! 🌱 Coba baca kembali stimulus dan teliti informasi yang tersedia. Kamu masih memiliki <b>satu kesempatan</b> untuk memperbaiki jawaban.');
+ }else{
+   answered=true;results.push({points:0,correct:false,retried:true});
+   showFeedback('bad',`Jawaban masih belum tepat. Tidak apa-apa, setiap kesalahan adalah kesempatan untuk belajar. 💪<br>${q.explain}<br><b>0 poin untuk soal ini.</b>`);
+   lockQuestion();
+ }
+}
+function lockQuestion(){
+ $('submitBtn').disabled=true;$('nextArea').classList.remove('hidden');
+ $('attemptHint').textContent='Soal selesai';
+ document.querySelectorAll('#answerArea input').forEach(x=>x.disabled=true);
+ $('scoreLabel').textContent='Skor sementara: '+score;
+ $('progressLabel').textContent=`Soal ${current+1} dari 10 • selesai`;
+ $('progressPct').textContent=`${Math.round((current+1)/10*100)}% selesai`;
+ $('progressBar').style.width=((current+1)/10*100)+'%';
+}
+function nextQuestion(){
+ if(!answered)return;
+ current++;
+ if(current<questions.length)renderQuestion();else finishQuiz();
+}
+function finishQuiz(){
+ $('quiz').classList.add('hidden');$('finish').classList.remove('hidden');
+ $('finalScore').textContent=score+'/100';
+ const correct=results.filter(x=>x.correct).length,retries=results.filter(x=>x.retried).length;
+ $('correctCount').textContent=correct+'/10';$('retryCount').textContent=retries;
+ $('finishMessage').textContent=`${student} (${klass}), kamu telah menyelesaikan seluruh 10 tantangan peluang. ${score>=80?'Hasil yang hebat! Pertahankan kemampuan bernalarmu.':score>=60?'Terus berlatih, pemahamanmu sedang berkembang.':'Tetap semangat! Pelajari kembali pembahasan dan coba lagi.'}`;
+ $('reviewList').innerHTML=results.map((r,i)=>`<div class="review-row"><span>Soal ${i+1} ${r.retried?'• mengulang':''}</span><b style="color:${r.correct?'#15803d':'#b91c1c'}">${r.points}/10 poin</b></div>`).join('')+`<div class="review-row"><b>Total nilai</b><b>${score}/100</b></div>`;
+}
+</script>
+</body>
+</html>
